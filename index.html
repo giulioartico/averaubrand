@@ -3,46 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Averau | Full Screen</title>
+    <title>Averau | Portfolio</title>
     <style>
-        /* Rimuoviamo ogni margine e padding di default */
-        html, body {
+        /* Rimuoviamo i margini di default */
+        body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
-            width: 100%;
-            overflow: hidden; /* Evita lo scroll se l'immagine è precisa */
-            background-color: #000; /* Sfondo nero di sicurezza mentre carica */
+            background-color: #000; /* Colore di sfondo se l'immagine non copre tutto */
         }
 
-        .fullscreen-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .scroll-container {
             width: 100%;
-            height: 100%;
-            
-            /* Sostituisci 'immagine.jpg' con il nome del tuo file */
-            background-image: url('immagine.jpg'); 
-            
-            /* Centra l'immagine e la scala per coprire tutto lo schermo */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Ottimizzazione per Mobile: se l'immagine è molto larga, 
-           possiamo decidere come focalizzarla sugli schermi stretti */
-        @media (max-width: 768px) {
-            .fullscreen-bg {
-                background-attachment: scroll; /* Migliore resa su alcuni browser mobile */
+        .full-image {
+            width: 100%;      /* Occupa tutta la larghezza */
+            height: auto;     /* L'altezza si adatta proporzionalmente */
+            display: block;   /* Rimuove spazi vuoti sotto l'immagine */
+        }
+
+        /* Ottimizzazione per Desktop: evita che immagini verticali 
+           diventino troppo giganti su schermi larghi */
+        @media (min-width: 1024px) {
+            .full-image {
+                max-width: 1200px; /* Limita la larghezza massima su PC */
+                margin: 0 auto;    /* Centra l'immagine nel browser */
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="fullscreen-bg"></div>
+    <div class="scroll-container">
+        <img src="immagine.jpg" alt="Portfolio Image" class="full-image">
+    </div>
 
 </body>
 </html>
