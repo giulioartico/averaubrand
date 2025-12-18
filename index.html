@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Nome Cognome</title>
+    <style>
+        /* CSS Interno per rendere il sito gradevole da subito */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #2c3e50;
+            color: #ffffff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #2c3e50;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nome Cognome</h1>
+        <p>Web Designer & Developer</p>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>Chi Sono</h2>
+            <p>Benvenuto nel mio portfolio! Questo è un sito statico ospitato su GitHub Pages. Qui puoi mostrare i tuoi progetti e le tue competenze.</p>
+        </section>
+
+        <section id="progetti">
+            <h2>I Miei Progetti</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Progetto Esempio 1</h3>
+                    <p>Descrizione breve del lavoro svolto.</p>
+                </div>
+                <div class="card">
+                    <h3>Progetto Esempio 2</h3>
+                    <p>Dettagli tecnici o creativi del progetto.</p>
+                </div>
+                <div class="card">
+                    <h3>Progetto Esempio 3</h3>
+                    <p>Un altro esempio di lavoro nel portfolio.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 - Creato con HTML e Passione</p>
+    </footer>
+
+</body>
+</html>
