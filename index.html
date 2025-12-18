@@ -3,102 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Averau | Portfolio</title>
+    <title>La Mia Immagine | Averau</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            /* Variabili CSS per colori - facili da cambiare */
-            --primary-color: #007bff; /* Blu, tipico per link/azioni */
-            --text-color: #333;
-            --light-text-color: #666;
-            --background-color: #f8f8f8;
-            --card-bg: #ffffff;
-            --border-color: #e0e0e0;
-            --dark-bg: #222;
-            --dark-text: #f0f0f0;
-        }
-
+        /* Stili Generali */
         body {
-            font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            scroll-behavior: smooth;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Fa in modo che la pagina occupi almeno l'altezza della finestra */
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header / Navbar */
-        .navbar {
-            background-color: var(--card-bg); /* Sfondo chiaro come nel tuo design Framer */
-            padding: 15px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--dark-bg); /* Testo scuro */
-            text-decoration: none;
-        }
-
-        .navbar .nav-links a {
-            color: var(--light-text-color);
-            text-decoration: none;
-            margin-left: 25px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .navbar .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            background-color: #d1e7dd; /* Un colore simile al verde acqua/chiaro che si vede */
+            max-width: 900px; /* Larghezza massima per i desktop */
+            width: 90%; /* Occupa il 90% della larghezza su schermi più piccoli */
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden; /* Assicura che l'immagine non esca dai bordi */
             text-align: center;
-            padding: 100px 0;
-            color: var(--text-color);
+            padding-bottom: 30px; /* Spazio sotto il testo */
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
+        /* Stili dell'Immagine */
+        .hero-image {
+            width: 100%; /* L'immagine occupa tutta la larghezza del container */
+            height: auto; /* Mantiene le proporzioni dell'immagine */
+            display: block; /* Rimuove lo spazio extra sotto l'immagine */
+            object-fit: cover; /* Assicura che l'immagine copra l'area, tagliando se necessario */
+            max-height: 60vh; /* Altezza massima per l'immagine, utile su desktop */
+        }
+
+        /* Stili del Contenuto Testuale */
+        .content {
+            padding: 20px 30px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #666;
             margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 30px auto;
         }
 
         .button {
             display: inline-block;
-            background-color: var(--primary-color);
+            background-color: #007bff;
             color: white;
             padding: 12px 25px;
             border-radius: 5px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 700;
             transition: background-color 0.3s ease;
         }
 
@@ -106,194 +75,39 @@
             background-color: #0056b3;
         }
 
-        /* Sezioni Portfolio/About */
-        section {
-            padding: 80px 0;
-            background-color: var(--card-bg); /* Sfondo bianco per le sezioni */
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        section:nth-child(even) { /* Sfondo leggermente diverso per sezioni alterne */
-            background-color: var(--background-color);
-        }
-
-        section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            color: var(--dark-bg);
-            font-weight: 700;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .project-card .content {
-            padding: 25px;
-        }
-
-        .project-card h3 {
-            font-size: 1.7rem;
-            margin-top: 0;
-            margin-bottom: 10px;
-            color: var(--dark-bg);
-        }
-
-        .project-card p {
-            font-size: 0.95rem;
-            color: var(--light-text-color);
-        }
-
-        /* Sezione Contatti */
-        .contact {
-            text-align: center;
-        }
-
-        .contact p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-
-        .social-links a {
-            display: inline-block;
-            margin: 0 15px;
-            font-size: 2rem;
-            color: var(--dark-bg);
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark-bg);
-            color: var(--dark-text);
-            text-align: center;
-            padding: 40px 0;
-            font-size: 0.9rem;
-        }
-
-        /* Media Queries per la responsività */
+        /* Media Queries per Mobile */
         @media (max-width: 768px) {
-            .navbar .nav-links {
-                display: none; /* Potresti voler un menu hamburger */
+            .container {
+                width: 95%; /* Leggermente più largo su mobile */
+                margin: 20px auto; /* Spazio dai bordi su mobile */
+                padding-bottom: 20px;
             }
-            .hero h1 {
-                font-size: 2.5rem;
+
+            .hero-image {
+                max-height: 40vh; /* Altezza leggermente ridotta su mobile */
             }
-            section {
-                padding: 60px 0;
+
+            h1 {
+                font-size: 1.8em;
             }
-            section h2 {
-                font-size: 2rem;
-                margin-bottom: 40px;
+
+            p {
+                font-size: 1em;
             }
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">Averau</a>
-            <div class="nav-links">
-                <a href="#hero">Home</a>
-                <a href="#about">Chi Sono</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#contact">Contatti</a>
-            </div>
+    <div class="container">
+        <img src="hero-image.jpg" alt="Descrizione della tua immagine" class="hero-image">
+        
+        <div class="content">
+            <h1>Il Mio Nuovo Progetto</h1>
+            <p>Questa è una pagina di prova con la tua immagine principale. È completamente responsive e si adatta sia a schermi desktop che mobile. Puoi personalizzare il titolo, il testo e aggiungere link qui sotto!</p>
+            <a href="#" class="button">Scopri di più</a>
         </div>
-    </nav>
-
-    <header class="hero" id="hero">
-        <div class="container">
-            <h1>Ciao, sono Averau.</h1>
-            <p>Sono un Web Designer e Developer focalizzato su esperienze digitali uniche e funzionali.</p>
-            <a href="#portfolio" class="button">Vedi i miei lavori</a>
-        </div>
-    </header>
-
-    <section id="about">
-        <div class="container">
-            <h2>Chi Sono</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
-                Con una passione per la creazione di interfacce intuitive e accattivanti, mi dedico a trasformare idee complesse in soluzioni web eleganti e facili da usare. Ogni progetto è un'opportunità per unire estetica e funzionalità.
-            </p>
-        </div>
-    </section>
-
-    <section id="portfolio">
-        <div class="container">
-            <h2>I Miei Progetti</h2>
-            <div class="grid-container">
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/600x400?text=Progetto+1" alt="Descrizione Progetto 1">
-                    <div class="content">
-                        <h3>Design App Mobile</h3>
-                        <p>Creazione di un'interfaccia utente minimalista e intuitiva per un'applicazione mobile di gestione delle attività.</p>
-                        </div>
-                </div>
-
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/600x400?text=Progetto+2" alt="Descrizione Progetto 2">
-                    <div class="content">
-                        <h3>Sito Web E-commerce</h3>
-                        <p>Sviluppo front-end di una piattaforma e-commerce, con attenzione alla UX e alla responsività su tutti i dispositivi.</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/600x400?text=Progetto+3" alt="Descrizione Progetto 3">
-                    <div class="content">
-                        <h3>Identità Visiva Brand</h3>
-                        <p>Progettazione del logo, palette colori e linee guida di un nuovo brand nel settore tecnologico.</p>
-                    </div>
-                </div>
-
-                </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container contact">
-            <h2>Contattami</h2>
-            <p>Se sei interessato a collaborare o semplicemente per un saluto, non esitare a contattarmi.</p>
-            <p style="margin-bottom: 40px;"><a href="mailto:tuaemail@esempio.com" class="button">Invia una Email</a></p>
-            <div class="social-links">
-                <a href="https://linkedin.com/in/tuoprofilo" target="_blank" title="LinkedIn">in</a> <a href="https://github.com/tuoutente" target="_blank" title="GitHub">gh</a> </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Averau. Tutti i diritti riservati.</p>
-        </div>
-    </footer>
+    </div>
 
 </body>
 </html>
