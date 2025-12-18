@@ -3,88 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Nome Cognome</title>
+    <title>Averau | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS Interno per rendere il sito gradevole da subito */
+        :root {
+            /* Variabili CSS per colori - facili da cambiare */
+            --primary-color: #007bff; /* Blu, tipico per link/azioni */
+            --text-color: #333;
+            --light-text-color: #666;
+            --background-color: #f8f8f8;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --dark-bg: #222;
+            --dark-text: #f0f0f0;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
             line-height: 1.6;
             margin: 0;
-            color: #333;
-            background-color: #f4f4f4;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            scroll-behavior: smooth;
         }
-        header {
-            background: #2c3e50;
-            color: #ffffff;
-            padding: 2rem 0;
-            text-align: center;
-        }
+
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 2rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+
+        /* Header / Navbar */
+        .navbar {
+            background-color: var(--card-bg); /* Sfondo chiaro come nel tuo design Framer */
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark-bg); /* Testo scuro */
+            text-decoration: none;
+        }
+
+        .navbar .nav-links a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #d1e7dd; /* Un colore simile al verde acqua/chiaro che si vede */
             text-align: center;
+            padding: 100px 0;
+            color: var(--text-color);
         }
-        .card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: #2c3e50;
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--primary-color);
             color: white;
-            margin-top: 2rem;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Sezioni Portfolio/About */
+        section {
+            padding: 80px 0;
+            background-color: var(--card-bg); /* Sfondo bianco per le sezioni */
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:nth-child(even) { /* Sfondo leggermente diverso per sezioni alterne */
+            background-color: var(--background-color);
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--dark-bg);
+            font-weight: 700;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-card .content {
+            padding: 25px;
+        }
+
+        .project-card h3 {
+            font-size: 1.7rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--dark-bg);
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            color: var(--light-text-color);
+        }
+
+        /* Sezione Contatti */
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 2rem;
+            color: var(--dark-bg);
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Media Queries per la responsività */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none; /* Potresti voler un menu hamburger */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            section {
+                padding: 60px 0;
+            }
+            section h2 {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Nome Cognome</h1>
-        <p>Web Designer & Developer</p>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Averau</a>
+            <div class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#about">Chi Sono</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contatti</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" id="hero">
+        <div class="container">
+            <h1>Ciao, sono Averau.</h1>
+            <p>Sono un Web Designer e Developer focalizzato su esperienze digitali uniche e funzionali.</p>
+            <a href="#portfolio" class="button">Vedi i miei lavori</a>
+        </div>
     </header>
 
-    <div class="container">
-        <section id="about">
+    <section id="about">
+        <div class="container">
             <h2>Chi Sono</h2>
-            <p>Benvenuto nel mio portfolio! Questo è un sito statico ospitato su GitHub Pages. Qui puoi mostrare i tuoi progetti e le tue competenze.</p>
-        </section>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+                Con una passione per la creazione di interfacce intuitive e accattivanti, mi dedico a trasformare idee complesse in soluzioni web eleganti e facili da usare. Ogni progetto è un'opportunità per unire estetica e funzionalità.
+            </p>
+        </div>
+    </section>
 
-        <section id="progetti">
+    <section id="portfolio">
+        <div class="container">
             <h2>I Miei Progetti</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>Progetto Esempio 1</h3>
-                    <p>Descrizione breve del lavoro svolto.</p>
+            <div class="grid-container">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/600x400?text=Progetto+1" alt="Descrizione Progetto 1">
+                    <div class="content">
+                        <h3>Design App Mobile</h3>
+                        <p>Creazione di un'interfaccia utente minimalista e intuitiva per un'applicazione mobile di gestione delle attività.</p>
+                        </div>
                 </div>
-                <div class="card">
-                    <h3>Progetto Esempio 2</h3>
-                    <p>Dettagli tecnici o creativi del progetto.</p>
+
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/600x400?text=Progetto+2" alt="Descrizione Progetto 2">
+                    <div class="content">
+                        <h3>Sito Web E-commerce</h3>
+                        <p>Sviluppo front-end di una piattaforma e-commerce, con attenzione alla UX e alla responsività su tutti i dispositivi.</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>Progetto Esempio 3</h3>
-                    <p>Un altro esempio di lavoro nel portfolio.</p>
+
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/600x400?text=Progetto+3" alt="Descrizione Progetto 3">
+                    <div class="content">
+                        <h3>Identità Visiva Brand</h3>
+                        <p>Progettazione del logo, palette colori e linee guida di un nuovo brand nel settore tecnologico.</p>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </div>
+
+                </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container contact">
+            <h2>Contattami</h2>
+            <p>Se sei interessato a collaborare o semplicemente per un saluto, non esitare a contattarmi.</p>
+            <p style="margin-bottom: 40px;"><a href="mailto:tuaemail@esempio.com" class="button">Invia una Email</a></p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/tuoprofilo" target="_blank" title="LinkedIn">in</a> <a href="https://github.com/tuoutente" target="_blank" title="GitHub">gh</a> </div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 - Creato con HTML e Passione</p>
+        <div class="container">
+            <p>&copy; 2025 Averau. Tutti i diritti riservati.</p>
+        </div>
     </footer>
 
 </body>
