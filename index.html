@@ -3,66 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Averau | theAveraudreamin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&display=swap" rel="stylesheet">
+    <title>Averau | averaubrand</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet">
     
     <style>
         body, html {
             margin: 0;
             padding: 0;
             background-color: #000;
+            overflow-x: hidden;
         }
 
-        .video-container {
+        .hero-container {
             position: relative;
             width: 100%;
+            height: 100vh; /* Full screen su desktop */
             display: flex;
             justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Gestione visibilità elementi */
+        .desktop-image {
+            display: none; /* Nascosta di default */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         video {
-            width: 100%;
-            height: auto;
             display: block;
-            max-width: 1200px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
+        /* Testo in sovrainpressione */
         .video-overlay {
             position: absolute;
-            top: 15%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: #fff;
             text-align: center;
             width: 100%;
             pointer-events: none;
-            padding: 0 20px;
+            z-index: 10;
         }
 
-.video-overlay h1 {
+        .video-overlay h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-weight: 200;
-            font-style: italic; /* Aggiunge un tocco onirico ed elegante */
-            font-size: 3.5rem;
-            letter-spacing: 0.1rem; /* Spaziatura ridotta rispetto al maiuscolo per favorire la lettura */
+            font-weight: 300;
+            font-style: italic;
+            font-size: 4vw;
             margin: 0;
-            text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
-            /* Sfumatura sottile per migliorare il contrasto */
-            -webkit-font-smoothing: antialiased;
+            text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* Responsive */
+        /* --- LOGICA DESKTOP (sopra i 768px) --- */
+        @media (min-width: 769px) {
+            video {
+                display: none; /* Nasconde il video */
+            }
+            .desktop-image {
+                display: block; /* Mostra l'immagine */
+            }
+        }
+
+        /* --- LOGICA MOBILE (fino a 768px) --- */
         @media (max-width: 768px) {
+            .hero-container {
+                height: auto; /* Il contenitore si adatta al video su mobile */
+                min-height: 300px;
+            }
+            video {
+                height: auto;
+                object-fit: contain;
+            }
             .video-overlay h1 {
-                font-size: 1.2rem;
-                letter-spacing: 0.3rem;
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="video-container">
+    <div class="hero-container">
+        <img src="immagine-desktop.jpg" alt="Averau Cortina" class="desktop-image">
+
         <video autoplay muted loop playsinline>
             <source src="video.mp4" type="video/mp4">
             Il tuo browser non supporta il formato video.
